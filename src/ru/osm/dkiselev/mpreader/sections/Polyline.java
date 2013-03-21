@@ -11,7 +11,6 @@ public class Polyline extends SectionBase {
 	private boolean marine = false;
 	
 	private String label;
-	private String label2;
 	
 	private int endLevel;
 	

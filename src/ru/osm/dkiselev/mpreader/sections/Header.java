@@ -1,7 +1,6 @@
 package ru.osm.dkiselev.mpreader.sections;
 
-
-
+@SuppressWarnings("unused")
 public class Header extends SectionBase {
 
 	public static String NAME = "IMG ID";
@@ -49,24 +48,24 @@ public class Header extends SectionBase {
 	private boolean leftSideTraffic = false;
 	private boolean nt = false;
 	
-	public static class HeaderReader extends SectionReaderBase {
+	public static class HeaderReader extends SectionReaderBase<Header> {
 
 		private static final HeaderReader instance = new HeaderReader();
 		
 		private HeaderReader(){};
 		
 		@Override
-		public Section newSection() {
+		public Header newSection() {
 			return new Header();
 		}
 
 		@Override
-		public void readLine(String line, Section currentSection) {
+		public void readLine(String line, Header currentSection) {
 			Pair<String, String> kv = readPair(line);
 			
 		}
 
-		public static SectionReader getInstance() {
+		public static SectionReader<Header> getInstance() {
 			return instance;
 		}
 		

@@ -76,7 +76,7 @@ public class MPReader {
 				
 			} else {
 				
-				currentSectionReader = readersFactory.getReaderForSection(sectionName);
+				currentSectionReader = (SectionReader<Section>) readersFactory.getReaderForSection(sectionName);
 				
 				currentSection = currentSectionReader.newSection();
 			}

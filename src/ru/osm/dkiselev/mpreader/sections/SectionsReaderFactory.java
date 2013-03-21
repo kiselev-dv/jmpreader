@@ -8,7 +8,7 @@ public class SectionsReaderFactory {
 
 	private static final SectionsReaderFactory instance = new SectionsReaderFactory();
 	
-	private Map<String, SectionReader> readers = new HashMap<String, SectionReader>();
+	private Map<String, SectionReader<?>> readers = new HashMap<String, SectionReader<?>>();
 	
 	private SectionsReaderFactory() {
 		
@@ -44,8 +44,8 @@ public class SectionsReaderFactory {
 		
 	};
 	
-	public SectionReader getReaderForSection(String sectionName) {
-		SectionReader reader = readers.get(sectionName);
+	public SectionReader<? extends Section> getReaderForSection(String sectionName) {
+		SectionReader<? extends Section> reader = readers.get(sectionName);
 		
 		if(reader != null) {
 			return reader; 
