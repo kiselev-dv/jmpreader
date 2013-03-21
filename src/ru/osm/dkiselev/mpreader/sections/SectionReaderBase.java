@@ -18,7 +18,7 @@ public abstract class SectionReaderBase<T extends Section> implements SectionRea
 			return null;
 		}
 		
-		return new Pair<String, String>(line.substring(0, index),  line.substring(index + 1, line.length() - 1));
+		return new Pair<String, String>(line.substring(0, index),  line.substring(index + 1, line.length()));
 	}
 	
 	public static class Pair<K, V> {

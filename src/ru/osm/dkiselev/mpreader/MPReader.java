@@ -18,7 +18,7 @@ public class MPReader {
 	private BufferedReader reader; 
 	
 	private List<String> comments = new ArrayList<String>(0);
-	private SectionReader currentSectionReader;
+	private SectionReader<Section> currentSectionReader;
 	private Section currentSection;
 	
 	private SectionsReaderFactory readersFactory = SectionsReaderFactory.get();
@@ -42,6 +42,7 @@ public class MPReader {
 		while(line != null);
 	}
 
+	@SuppressWarnings("unchecked")
 	private void processLine(String line) {
 
 		if(line == null) {
@@ -59,9 +60,8 @@ public class MPReader {
 		if(line.charAt(0) == ';') {
 			comments.add(line);
 		}
-		
 		//Section start or end
-		if(line.charAt(0) == '[' && line.charAt(line.length() - 1) == ']') {
+		else if(line.charAt(0) == '[' && line.charAt(line.length() - 1) == ']') {
 			String sectionName = line.substring(1, line.length() - 1);
 			
 			if(sectionName.startsWith("END")) {
